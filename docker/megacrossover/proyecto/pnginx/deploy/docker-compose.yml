@@ -6,7 +6,7 @@ services:
       args:
         - INICIALES=jhlw
     container_name: ctjhlwnginx
-    image: jiahaolin69/nginx
+    image: jiahaolin69/nginx1
     ports:
       - 6969:80
     env_file:
