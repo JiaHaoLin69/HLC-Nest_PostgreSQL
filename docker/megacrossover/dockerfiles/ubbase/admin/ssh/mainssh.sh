@@ -7,16 +7,16 @@ configurar_ssh() {
   # Deshabilitar el login de root
   sed -i 's/#PermitRootLogin.*/PermitRootLogin no/' /etc/ssh/sshd_config
   # Cambiar el puerto de SSH
-  sed -i 's/#Port.*/Port '$PORT_SSH'/' /etc/ssh/sshd_config
+  sed -i 's/#Port.*/Port 22452/' /etc/ssh/sshd_config
   fi
   
   # Crear directorios
   mkdir -p /run/sshd
-  mkdir -p /home/${USUARIO}/.ssh
+  mkdir -p /home/javier/.ssh
   
   # Añadir clave si existe
   if [ -f /root/admin/base/common/id_rsa.pub ]; then
-    cat /root/admin/base/common/id_rsa.pub >> /home/${USUARIO}/.ssh/authorized_keys
+    cat /root/admin/base/common/id_rsa.pub >> /home/javier/.ssh/authorized_keys
     echo "Clave SSH añadida" >> /root/logs/informe.log
   fi
   

@@ -6,12 +6,18 @@ const pokemonSprites = {
     'Charizard': 6,
     'Blastoise': 9,
     'Venusaur': 3,
+    'Bulbasaur': 1,
     'Gengar': 94,
     'Snorlax': 143,
     'Mewtwo': 150,
     'Gyarados': 130,
     'Dragonite': 149,
-    'Jolteon': 135
+    'Jolteon': 135,
+    'Umbreon': 197,
+    'Ninetales': 38,
+    'Lucario': 448,
+    'Crobat': 169,
+    'Lapras': 131
 };
 
 function getPokemonImage(nombre) {
