@@ -9,8 +9,6 @@ services:
     image: jiahaolin69/postgre
     ports:
       - 5432:5432
-    env_file:
-      - ./.env
     volumes:
       - ./logs:/root/logs
     networks:
