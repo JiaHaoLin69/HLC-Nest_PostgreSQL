@@ -13,7 +13,7 @@ services:
     networks:
       - nestpostgre-network
     healthcheck:
-      test: ["CMD-SHELL", "su - postgres -c '/usr/lib/postgresql/15/bin/pg_isready -U postgres -d nestasir'"]
+      test: ["CMD-SHELL", "su - postgres -c 'pg_isready -U postgres -d nestasir'"]
       interval: 5s
       timeout: 5s
       retries: 10

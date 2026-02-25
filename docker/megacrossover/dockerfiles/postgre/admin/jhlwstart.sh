@@ -12,6 +12,11 @@ PG_PASSWORD="usuario"
 PG_DATABASE="nestasir"
 PG_PORT="5432"
 
+# Detectar versión de PostgreSQL instalada
+PG_VERSION=$(ls /usr/lib/postgresql/ | sort -V | tail -1)
+PG_BIN="/usr/lib/postgresql/$PG_VERSION/bin"
+PGDATA="/var/lib/postgresql/data"
+
 # =============================================
 # Cargar entrypoint de la capa anterior (ubseguridad)
 # =============================================
@@ -30,11 +35,9 @@ load_entrypoint_seguridad() {
 # Inicializar cluster de PostgreSQL
 # =============================================
 inicializar_cluster() {
-    PGDATA="/var/lib/postgresql/data"
-
     if [ ! -f "$PGDATA/PG_VERSION" ]; then
-        echo "Inicializando cluster PostgreSQL..." >> "$LOG_FILE"
-        su - postgres -c "/usr/lib/postgresql/15/bin/initdb -D $PGDATA"
+        echo "Inicializando cluster PostgreSQL (v$PG_VERSION)..." >> "$LOG_FILE"
+        su - postgres -c "$PG_BIN/initdb -D $PGDATA"
         echo "Cluster inicializado" >> "$LOG_FILE"
     else
         echo "Cluster PostgreSQL ya existe, saltando inicialización" >> "$LOG_FILE"
@@ -45,8 +48,6 @@ inicializar_cluster() {
 # Configurar acceso remoto
 # =============================================
 configurar_acceso() {
-    PGDATA="/var/lib/postgresql/data"
-
     echo "Configurando acceso remoto..." >> "$LOG_FILE"
 
     # Escuchar en todas las interfaces
@@ -68,7 +69,7 @@ crear_usuario_y_bd() {
     echo "Arrancando PostgreSQL temporalmente para configuración..." >> "$LOG_FILE"
 
     # Arrancar PostgreSQL temporalmente
-    su - postgres -c "/usr/lib/postgresql/15/bin/pg_ctl -D /var/lib/postgresql/data start -w -l /var/lib/postgresql/logfile"
+    su - postgres -c "$PG_BIN/pg_ctl -D $PGDATA start -w -l /var/lib/postgresql/logfile"
 
     # Configurar contraseña del usuario postgres
     su - postgres -c "psql -c \"ALTER USER $PG_USER WITH PASSWORD '$PG_PASSWORD';\""
@@ -84,7 +85,7 @@ crear_usuario_y_bd() {
     echo "Privilegios otorgados a '$PG_USER' sobre '$PG_DATABASE'" >> "$LOG_FILE"
 
     # Parar PostgreSQL tras la configuración
-    su - postgres -c "/usr/lib/postgresql/15/bin/pg_ctl -D /var/lib/postgresql/data stop -w"
+    su - postgres -c "$PG_BIN/pg_ctl -D $PGDATA stop -w"
 
     echo "Configuración de usuario y BD completada" >> "$LOG_FILE"
 }
@@ -94,7 +95,7 @@ crear_usuario_y_bd() {
 # =============================================
 arrancar_postgresql_background() {
     echo "Arrancando PostgreSQL en segundo plano..." >> "$LOG_FILE"
-    su - postgres -c "/usr/lib/postgresql/15/bin/pg_ctl -D /var/lib/postgresql/data start -w -l /var/lib/postgresql/logfile" &
+    su - postgres -c "$PG_BIN/pg_ctl -D $PGDATA start -w -l /var/lib/postgresql/logfile" &
     echo "PostgreSQL arrancado en segundo plano" >> "$LOG_FILE"
 }
 
@@ -105,7 +106,7 @@ main() {
     mkdir -p "$LOG_DIR"
     touch "$LOG_FILE"
 
-    echo "=== Iniciando capa PostgreSQL ===" >> "$LOG_FILE"
+    echo "=== Iniciando capa PostgreSQL (v$PG_VERSION) ===" >> "$LOG_FILE"
     echo "Fecha: $(date)" >> "$LOG_FILE"
     echo "Usuario: $PG_USER | BD: $PG_DATABASE | Puerto: $PG_PORT" >> "$LOG_FILE"
 
