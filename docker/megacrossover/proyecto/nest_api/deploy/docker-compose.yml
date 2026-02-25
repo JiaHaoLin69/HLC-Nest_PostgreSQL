@@ -9,7 +9,6 @@ services:
     image: jiahaolin69/nginxpokeapi
     ports:
       - 3010:3001
-      - 80:80
     env_file:
       - ./.env
     volumes:
