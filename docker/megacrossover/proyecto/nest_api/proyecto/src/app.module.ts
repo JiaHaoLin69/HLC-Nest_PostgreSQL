@@ -25,7 +25,7 @@ import { PokemonModule } from './pokemon/pokemon.module';
     exclude: ['/api/(.*)'],
   }), PinturaModule, TypeOrmModule.forRoot({
     type: 'postgres',
-    host: 'usuarios-postgres',
+    host: 'localhost',
     port: 5432,
     username: 'postgres',
     password: 'usuario',
