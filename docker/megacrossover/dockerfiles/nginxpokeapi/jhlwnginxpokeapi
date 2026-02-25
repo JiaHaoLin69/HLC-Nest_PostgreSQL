@@ -1,0 +1,8 @@
+FROM jiahaolin/pokeapi
+
+RUN mkdir -p /root/admin/nginxpokeapi
+WORKDIR /root/admin/nginxpokeapi
+COPY ./dockerfiles/nginxpokeapi/admin/jhlwstart.sh .
+RUN chmod +x ./jhlwstart.sh
+
+ENTRYPOINT ["./jhlwstart.sh"]

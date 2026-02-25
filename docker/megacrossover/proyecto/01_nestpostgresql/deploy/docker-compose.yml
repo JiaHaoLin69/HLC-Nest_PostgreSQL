@@ -1,0 +1,56 @@
+services:
+  # =============================================
+  # PostgreSQL - Base de datos
+  # =============================================
+  postgresBDusarios:
+    image: postgres:15-alpine
+    container_name: usuarios-postgres
+    env_file:
+      - .app.env
+    environment:
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - nestpostgre-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USERNAME} -d ${DB_NAME}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  # =============================================
+  # NestJS - API Backend
+  # =============================================
+  ms-usuarios-nest:
+    build:
+      context: ../../nest_api/proyecto/
+      dockerfile: ../../proyecto/01_nestpostgresql/deploy/build_img/Dockerfile
+    image: jiahaolin69/nestpostgresql
+    container_name: caronte-ms-nestpostgresql
+    ports:
+      - "3001:3001"
+    env_file:
+      - .app.env
+    environment:
+      NODE_ENV: production
+    volumes:
+      - ./logs:/root/logs
+    networks:
+      - nestpostgre-network
+    depends_on:
+      postgresBDusarios:
+        condition: service_healthy
+
+# Volumen persistente para PostgreSQL
+volumes:
+  postgres_data:
+
+# Red interna para comunicación entre contenedores
+networks:
+  nestpostgre-network:
+    driver: bridge

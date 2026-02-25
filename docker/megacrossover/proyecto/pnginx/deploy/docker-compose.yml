@@ -1,0 +1,24 @@
+services:
+  web:
+    build:
+      context: /home/jiahaolin/nest/docker/megacrossover/
+      dockerfile: ./dockerfiles/sweb/nginx/jhlwnginx
+      args:
+        - INICIALES=jhlw
+    container_name: ctjhlwnginx
+    image: jiahaolin69/nginx
+    ports:
+      - 6969:80
+    env_file:
+      - ./.env
+    volumes:
+      - ./logs:/root/logs
+    networks:
+      pnginx_network:
+        ipv4_address: 192.168.22.3
+networks:
+  pnginx_network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 192.168.22.0/24
