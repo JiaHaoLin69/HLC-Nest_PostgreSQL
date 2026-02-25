@@ -1,4 +1,4 @@
-FROM jiahaolin/postgre
+FROM jiahaolin69/postgre
 
 ARG INICIALES
 

@@ -3,7 +3,7 @@ services:
   # PostgreSQL - Base de datos
   # =============================================
   postgresBDusarios:
-    image: jiahaolin/postgre
+    image: jiahaolin69/postgre
     container_name: usuarios-postgres
     volumes:
       - postgres_data:/var/lib/postgresql/data

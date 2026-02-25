@@ -1,4 +1,4 @@
-FROM jiahaolin/ubbase
+FROM jiahaolin69/ubbase
 
 RUN mkdir -p /root/admin/ubseguridad
 WORKDIR /root/admin/ubseguridad

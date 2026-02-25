@@ -1,4 +1,4 @@
-FROM jiahaolin/nginx
+FROM jiahaolin69/nginx
 
 # Instalar Node.js 22
 RUN apt-get update && apt-get install -y curl gnupg software-properties-common

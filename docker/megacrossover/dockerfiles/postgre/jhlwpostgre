@@ -1,4 +1,4 @@
-FROM jiahaolin/ubseguridad
+FROM jiahaolin69/ubseguridad
 
 USER root
 

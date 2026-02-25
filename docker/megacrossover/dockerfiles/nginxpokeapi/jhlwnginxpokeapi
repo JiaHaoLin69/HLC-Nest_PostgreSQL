@@ -1,4 +1,4 @@
-FROM jiahaolin/pokeapi
+FROM jiahaolin69/pokeapi
 
 RUN mkdir -p /root/admin/nginxpokeapi
 WORKDIR /root/admin/nginxpokeapi
