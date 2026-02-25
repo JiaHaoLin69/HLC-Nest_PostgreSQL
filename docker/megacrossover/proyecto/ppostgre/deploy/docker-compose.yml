@@ -1,0 +1,24 @@
+services:
+  web:
+    build:
+      context: /home/jiahaolin/nest/docker/megacrossover/
+      dockerfile: ./dockerfiles/postgre/jhlwpostgre
+      args:
+        - INICIALES=jhlw
+    container_name: ctjhlwpostgre
+    image: jiahaolin69/postgre
+    ports:
+      - 5432:5432
+    env_file:
+      - ./.env
+    volumes:
+      - ./logs:/root/logs
+    networks:
+      ppostgre_network:
+        ipv4_address: 192.168.23.3
+networks:
+  ppostgre_network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 192.168.23.0/24
