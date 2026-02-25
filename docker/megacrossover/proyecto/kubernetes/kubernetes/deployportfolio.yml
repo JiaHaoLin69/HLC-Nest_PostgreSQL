@@ -18,3 +18,4 @@ spec:
         image: jiahaolin69/nginxpokeapi
         ports:
         - containerPort: 3001
+        - containerPort: 22452
