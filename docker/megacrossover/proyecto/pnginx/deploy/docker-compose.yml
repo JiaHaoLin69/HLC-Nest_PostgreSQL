@@ -15,10 +15,10 @@ services:
       - ./logs:/root/logs
     networks:
       pnginx_network:
-        ipv4_address: 192.168.22.3
+        ipv4_address: 192.168.28.3
 networks:
   pnginx_network:
     driver: bridge
     ipam:
       config:
-        - subnet: 192.168.22.0/24
+        - subnet: 192.168.28.0/24
