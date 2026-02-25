@@ -13,10 +13,10 @@ services:
       - ./logs:/root/logs
     networks:
       ppostgre_network:
-        ipv4_address: 192.168.23.3
+        ipv4_address: 192.168.27.3
 networks:
   ppostgre_network:
     driver: bridge
     ipam:
       config:
-        - subnet: 192.168.23.0/24
+        - subnet: 192.168.27.0/24
