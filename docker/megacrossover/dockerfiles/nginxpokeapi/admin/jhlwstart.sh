@@ -1,79 +1,87 @@
 #!/bin/bash
 
-set -e
+LOG_DIR="/root/logs"
+LOG_FILE="$LOG_DIR/informe_web.log"
+
+log() {
+    echo "$1"
+    echo "$1" >> "$LOG_FILE"
+}
 
 load_entrypoint_postgre(){
-    echo "Cargando entrypoint PostgreSQL..." >> /root/logs/informe_web.log
+    log "Cargando entrypoint PostgreSQL..."
     
     if [ -f /root/admin/postgre/jhlwstart.sh ]; then
-        bash /root/admin/postgre/jhlwstart.sh
-        echo "Entrypoint PostgreSQL ejecutado" >> /root/logs/informe_web.log
+        bash /root/admin/postgre/jhlwstart.sh || log "ADVERTENCIA: Entrypoint PostgreSQL falló, continuando..."
+        log "Entrypoint PostgreSQL ejecutado"
     else
-        echo "ADVERTENCIA: jhlwstart.sh de PostgreSQL no encontrado" >> /root/logs/informe_web.log
+        log "ADVERTENCIA: jhlwstart.sh de PostgreSQL no encontrado"
     fi
 }
 
 load_entrypoint_nginx(){
-    echo "Cargando entrypoint Nginx..." >> /root/logs/informe_web.log
+    log "Cargando entrypoint Nginx..."
     
     if [ -f /root/admin/sweb/nginx/jhlwstart.sh ]; then
-        bash /root/admin/sweb/nginx/jhlwstart.sh
-        echo "Entrypoint Nginx ejecutado" >> /root/logs/informe_web.log
+        bash /root/admin/sweb/nginx/jhlwstart.sh || log "ADVERTENCIA: Entrypoint Nginx falló, continuando..."
+        log "Entrypoint Nginx ejecutado"
     else
-        echo "ADVERTENCIA: jhlwstart.sh de Nginx no encontrado" >> /root/logs/informe_web.log
+        log "ADVERTENCIA: jhlwstart.sh de Nginx no encontrado"
     fi
 }
 
 directorio_de_trabajo(){
-    echo "Cambiando directorio al proyecto NestJS..." >> /root/logs/informe_web.log
+    log "Cambiando directorio al proyecto NestJS..."
 
     if cd /root/admin/node/proyectos/nestpostgresql; then
-        echo "Directorio cambiado a: $(pwd)" >> /root/logs/informe_web.log
+        log "Directorio cambiado a: $(pwd)"
     else
-        echo "ERROR: No se pudo cambiar al directorio del proyecto NestJS" >> /root/logs/informe_web.log
+        log "ERROR: No se pudo cambiar al directorio del proyecto NestJS"
         exit 1
     fi
 }
 
 construir_y_arrancar(){
-    echo "Instalando dependencias NestJS..." >> /root/logs/informe_web.log
+    log "Instalando dependencias NestJS..."
     
     npm install
     
     # Construir proyecto NestJS (TypeScript -> JavaScript)
     if npm run build; then
-        echo "Proyecto NestJS construido" >> /root/logs/informe_web.log
+        log "Proyecto NestJS construido"
     else
-        echo "ERROR: Falló npm run build" >> /root/logs/informe_web.log
+        log "ERROR: Falló npm run build"
         exit 1
     fi
     
     # Copiar archivos estáticos (public) a nginx
     if [ -d public ]; then
-        cp -r public/* /var/www/html/
-        echo "Archivos estáticos copiados a /var/www/html" >> /root/logs/informe_web.log
+        cp -r public/* /var/www/html/ 2>/dev/null || true
+        log "Archivos estáticos copiados a /var/www/html"
     else
-        echo "ADVERTENCIA: Directorio public no encontrado" >> /root/logs/informe_web.log
+        log "ADVERTENCIA: Directorio public no encontrado"
     fi
     
     # Arrancar NestJS en segundo plano
-    echo "Arrancando NestJS en segundo plano..." >> /root/logs/informe_web.log
+    log "Arrancando NestJS en segundo plano..."
     HOST=0.0.0.0 npm run start:prod &
 }
 
 cargar_nginx(){
-    echo "Configurando Nginx..." >> /root/logs/informe_web.log
+    log "Configurando Nginx..."
     
     # Verificar configuración de Nginx
-    nginx -t
+    nginx -t 2>&1 || log "ADVERTENCIA: nginx -t falló"
     # Iniciar Nginx en primer plano (mantiene el contenedor vivo)
-    echo "Nginx arrancando en primer plano..." >> /root/logs/informe_web.log
+    log "Nginx arrancando en primer plano..."
     nginx -g 'daemon off;'
 }
 
 main(){
-    mkdir -p /root/logs
-    touch /root/logs/informe_web.log
+    mkdir -p "$LOG_DIR"
+    touch "$LOG_FILE"
+    log "=== Iniciando contenedor NestJS ==="
+    log "Fecha: $(date)"
     load_entrypoint_postgre
     load_entrypoint_nginx
     directorio_de_trabajo

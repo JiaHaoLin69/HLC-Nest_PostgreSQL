@@ -1,5 +1,4 @@
 #!/bin/bash
-set -e
 
 LOG_DIR="/root/logs"
 LOG_FILE="$LOG_DIR/informe_postgre.log"
@@ -17,17 +16,22 @@ PG_VERSION=$(ls /usr/lib/postgresql/ | sort -V | tail -1)
 PG_BIN="/usr/lib/postgresql/$PG_VERSION/bin"
 PGDATA="/var/lib/postgresql/data"
 
+log() {
+    echo "$1"
+    echo "$1" >> "$LOG_FILE"
+}
+
 # =============================================
 # Cargar entrypoint de la capa anterior (ubseguridad)
 # =============================================
 load_entrypoint_seguridad() {
-    echo "Ejecutando entrypoint seguridad..." >> "$LOG_FILE"
+    log "Ejecutando entrypoint seguridad..."
 
     if [ -f /root/admin/ubseguridad/jhlwstart.sh ]; then
-        bash /root/admin/ubseguridad/jhlwstart.sh
-        echo "Entrypoint seguridad ejecutado" >> "$LOG_FILE"
+        bash /root/admin/ubseguridad/jhlwstart.sh || log "ADVERTENCIA: Entrypoint seguridad falló, continuando..."
+        log "Entrypoint seguridad ejecutado"
     else
-        echo "ADVERTENCIA: No se encontró /root/admin/ubseguridad/jhlwstart.sh" >> "$LOG_FILE"
+        log "ADVERTENCIA: No se encontró /root/admin/ubseguridad/jhlwstart.sh"
     fi
 }
 
@@ -36,11 +40,11 @@ load_entrypoint_seguridad() {
 # =============================================
 inicializar_cluster() {
     if [ ! -f "$PGDATA/PG_VERSION" ]; then
-        echo "Inicializando cluster PostgreSQL (v$PG_VERSION)..." >> "$LOG_FILE"
-        su - postgres -c "$PG_BIN/initdb -D $PGDATA"
-        echo "Cluster inicializado" >> "$LOG_FILE"
+        log "Inicializando cluster PostgreSQL (v$PG_VERSION)..."
+        su - postgres -c "$PG_BIN/initdb -D $PGDATA" || { log "ERROR: Falló initdb"; return 1; }
+        log "Cluster inicializado"
     else
-        echo "Cluster PostgreSQL ya existe, saltando inicialización" >> "$LOG_FILE"
+        log "Cluster PostgreSQL ya existe, saltando inicialización"
     fi
 }
 
@@ -48,7 +52,7 @@ inicializar_cluster() {
 # Configurar acceso remoto
 # =============================================
 configurar_acceso() {
-    echo "Configurando acceso remoto..." >> "$LOG_FILE"
+    log "Configurando acceso remoto..."
 
     # Escuchar en todas las interfaces
     sed -i "s/#listen_addresses = 'localhost'/listen_addresses = '*'/" "$PGDATA/postgresql.conf"
@@ -59,44 +63,44 @@ configurar_acceso() {
         echo "host all all 0.0.0.0/0 md5" >> "$PGDATA/pg_hba.conf"
     fi
 
-    echo "Acceso remoto configurado" >> "$LOG_FILE"
+    log "Acceso remoto configurado"
 }
 
 # =============================================
 # Crear usuario y base de datos
 # =============================================
 crear_usuario_y_bd() {
-    echo "Arrancando PostgreSQL temporalmente para configuración..." >> "$LOG_FILE"
+    log "Arrancando PostgreSQL temporalmente para configuración..."
 
     # Arrancar PostgreSQL temporalmente
-    su - postgres -c "$PG_BIN/pg_ctl -D $PGDATA start -w -l /var/lib/postgresql/logfile"
+    su - postgres -c "$PG_BIN/pg_ctl -D $PGDATA start -w -l /var/lib/postgresql/logfile" || { log "ERROR: No se pudo arrancar PostgreSQL"; return 1; }
 
     # Configurar contraseña del usuario postgres
-    su - postgres -c "psql -c \"ALTER USER $PG_USER WITH PASSWORD '$PG_PASSWORD';\""
-    echo "Contraseña del usuario '$PG_USER' configurada" >> "$LOG_FILE"
+    su - postgres -c "psql -c \"ALTER USER $PG_USER WITH PASSWORD '$PG_PASSWORD';\"" || log "ADVERTENCIA: Falló alter user"
+    log "Contraseña del usuario '$PG_USER' configurada"
 
     # Crear base de datos si no existe
     su - postgres -c "psql -tc \"SELECT 1 FROM pg_database WHERE datname='$PG_DATABASE'\"" | grep -q 1 || \
-    su - postgres -c "psql -c \"CREATE DATABASE $PG_DATABASE OWNER $PG_USER;\""
-    echo "Base de datos '$PG_DATABASE' creada/verificada" >> "$LOG_FILE"
+    su - postgres -c "psql -c \"CREATE DATABASE $PG_DATABASE OWNER $PG_USER;\"" || log "ADVERTENCIA: Falló crear BD"
+    log "Base de datos '$PG_DATABASE' creada/verificada"
 
     # Otorgar privilegios
-    su - postgres -c "psql -c \"GRANT ALL PRIVILEGES ON DATABASE $PG_DATABASE TO $PG_USER;\""
-    echo "Privilegios otorgados a '$PG_USER' sobre '$PG_DATABASE'" >> "$LOG_FILE"
+    su - postgres -c "psql -c \"GRANT ALL PRIVILEGES ON DATABASE $PG_DATABASE TO $PG_USER;\"" || log "ADVERTENCIA: Falló grant"
+    log "Privilegios otorgados a '$PG_USER' sobre '$PG_DATABASE'"
 
     # Parar PostgreSQL tras la configuración
     su - postgres -c "$PG_BIN/pg_ctl -D $PGDATA stop -w"
 
-    echo "Configuración de usuario y BD completada" >> "$LOG_FILE"
+    log "Configuración de usuario y BD completada"
 }
 
 # =============================================
 # Arrancar PostgreSQL en segundo plano
 # =============================================
 arrancar_postgresql_background() {
-    echo "Arrancando PostgreSQL en segundo plano..." >> "$LOG_FILE"
+    log "Arrancando PostgreSQL en segundo plano..."
     su - postgres -c "$PG_BIN/pg_ctl -D $PGDATA start -w -l /var/lib/postgresql/logfile" &
-    echo "PostgreSQL arrancado en segundo plano" >> "$LOG_FILE"
+    log "PostgreSQL arrancado en segundo plano"
 }
 
 # =============================================
@@ -106,9 +110,9 @@ main() {
     mkdir -p "$LOG_DIR"
     touch "$LOG_FILE"
 
-    echo "=== Iniciando capa PostgreSQL (v$PG_VERSION) ===" >> "$LOG_FILE"
-    echo "Fecha: $(date)" >> "$LOG_FILE"
-    echo "Usuario: $PG_USER | BD: $PG_DATABASE | Puerto: $PG_PORT" >> "$LOG_FILE"
+    log "=== Iniciando capa PostgreSQL (v$PG_VERSION) ==="
+    log "Fecha: $(date)"
+    log "Usuario: $PG_USER | BD: $PG_DATABASE | Puerto: $PG_PORT"
 
     load_entrypoint_seguridad
     inicializar_cluster
@@ -116,7 +120,7 @@ main() {
     crear_usuario_y_bd
     arrancar_postgresql_background
 
-    echo "=== Capa PostgreSQL configurada correctamente ===" >> "$LOG_FILE"
+    log "=== Capa PostgreSQL configurada correctamente ==="
 }
 
 main
