@@ -3,22 +3,17 @@ services:
   # PostgreSQL - Base de datos
   # =============================================
   postgresBDusarios:
-    image: postgres:15-alpine
+    image: jiahaolin/postgre
     container_name: usuarios-postgres
-    env_file:
-      - .app.env
-    environment:
-      POSTGRES_USER: ${DB_USERNAME}
-      POSTGRES_PASSWORD: ${DB_PASSWORD}
-      POSTGRES_DB: ${DB_NAME}
     volumes:
       - postgres_data:/var/lib/postgresql/data
+      - ./logs:/root/logs
     ports:
       - "5432:5432"
     networks:
       - nestpostgre-network
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U ${DB_USERNAME} -d ${DB_NAME}"]
+      test: ["CMD-SHELL", "su - postgres -c '/usr/lib/postgresql/15/bin/pg_isready -U postgres -d nestasir'"]
       interval: 5s
       timeout: 5s
       retries: 10
@@ -34,10 +29,6 @@ services:
     container_name: caronte-ms-nestpostgresql
     ports:
       - "3001:3001"
-    env_file:
-      - .app.env
-    environment:
-      NODE_ENV: production
     volumes:
       - ./logs:/root/logs
     networks:

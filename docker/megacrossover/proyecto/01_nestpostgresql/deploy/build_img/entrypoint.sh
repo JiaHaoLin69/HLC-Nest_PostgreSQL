@@ -8,15 +8,21 @@ set -e
 LOG_DIR="/root/logs"
 LOG_FILE="$LOG_DIR/informe_nest.log"
 
+# Valores hardcodeados
+DB_HOST="usuarios-postgres"
+DB_PORT="5432"
+DB_NAME="nestasir"
+APP_PORT="3001"
+
 mkdir -p "$LOG_DIR"
 touch "$LOG_FILE"
 
 echo "=== Iniciando NestJS App ===" >> "$LOG_FILE"
 echo "Fecha: $(date)" >> "$LOG_FILE"
-echo "DB_HOST: ${DB_HOST}" >> "$LOG_FILE"
-echo "DB_PORT: ${DB_PORT}" >> "$LOG_FILE"
-echo "DATABASE: ${DATABASE}" >> "$LOG_FILE"
-echo "PORT: ${PORT}" >> "$LOG_FILE"
+echo "DB_HOST: $DB_HOST" >> "$LOG_FILE"
+echo "DB_PORT: $DB_PORT" >> "$LOG_FILE"
+echo "DATABASE: $DB_NAME" >> "$LOG_FILE"
+echo "PORT: $APP_PORT" >> "$LOG_FILE"
 
 # =============================================
 # Esperar a que PostgreSQL esté disponible
@@ -29,7 +35,7 @@ wait_for_postgres() {
 
     while [ $RETRY_COUNT -lt $MAX_RETRIES ]; do
         # Intentar conexión TCP al puerto de PostgreSQL
-        if nc -z "${DB_HOST}" "${DB_PORT}" 2>/dev/null; then
+        if nc -z "$DB_HOST" "$DB_PORT" 2>/dev/null; then
             echo "PostgreSQL está disponible!" >> "$LOG_FILE"
             return 0
         fi

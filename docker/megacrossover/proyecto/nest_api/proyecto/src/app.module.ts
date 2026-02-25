@@ -25,11 +25,11 @@ import { PokemonModule } from './pokemon/pokemon.module';
     exclude: ['/api/(.*)'],
   }), PinturaModule, TypeOrmModule.forRoot({
     type: 'postgres',
-    host: process.env.DB_HOST || 'localhost',
-    port: parseInt(process.env.DB_PORT ?? '5432'),
-    username: process.env.USUARIO,
-    password: process.env.PASSWORD,
-    database: process.env.DATABASE,
+    host: 'usuarios-postgres',
+    port: 5432,
+    username: 'postgres',
+    password: 'usuario',
+    database: 'nestasir',
     entities: [__dirname + '/**/*.entity{.ts,.js}'],
     synchronize: true
   }), UsuarioModule, LibreriaModule, MensajesModule, R11Module, RnnModule, PeliculasModule, PokemonModule],

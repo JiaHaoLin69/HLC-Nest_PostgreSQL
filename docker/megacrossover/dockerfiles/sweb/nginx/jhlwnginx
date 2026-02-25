@@ -1,4 +1,4 @@
-FROM jiahaolin/ubseguridad
+FROM jiahaolin/postgre
 
 ARG INICIALES
 
