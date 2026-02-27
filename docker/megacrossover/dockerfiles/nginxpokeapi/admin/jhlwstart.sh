@@ -77,11 +77,22 @@ cargar_nginx(){
     nginx -g 'daemon off;'
 }
 
+load_entrypoint_base(){
+    log "Cargando entrypoint base (SSH, usuario, sudo)..."
+    if [ -f /root/admin/base/jhlwstart.sh ]; then
+        bash /root/admin/base/jhlwstart.sh || log "ADVERTENCIA: Entrypoint base falló, continuando..."
+        log "Entrypoint base ejecutado"
+    else
+        log "ADVERTENCIA: jhlwstart.sh de base no encontrado"
+    fi
+}
+
 main(){
     mkdir -p "$LOG_DIR"
     touch "$LOG_FILE"
     log "=== Iniciando contenedor NestJS ==="
     log "Fecha: $(date)"
+    load_entrypoint_base
     load_entrypoint_postgre
     load_entrypoint_nginx
     directorio_de_trabajo
