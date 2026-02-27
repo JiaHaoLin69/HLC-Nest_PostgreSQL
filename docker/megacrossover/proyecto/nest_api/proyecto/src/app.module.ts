@@ -25,11 +25,11 @@ import { PokemonModule } from './pokemon/pokemon.module';
     exclude: ['/api/(.*)'],
   }), PinturaModule, TypeOrmModule.forRoot({
     type: 'postgres',
-    host: 'localhost',
-    port: 5432,
-    username: 'postgres',
-    password: 'usuario',
-    database: 'nestasir',
+    host: process.env.POSTGRES_HOST || 'localhost',
+    port: parseInt(process.env.POSTGRES_PORT || '5432', 10),
+    username: process.env.POSTGRES_USER || 'postgres',
+    password: process.env.POSTGRES_PASSWORD || 'usuario',
+    database: process.env.POSTGRES_DB || 'nestasir',
     entities: [__dirname + '/**/*.entity{.ts,.js}'],
     synchronize: true
   }), UsuarioModule, LibreriaModule, MensajesModule, R11Module, RnnModule, PeliculasModule, PokemonModule],

@@ -24,3 +24,14 @@ spec:
         ports:
         - containerPort: {{ .Values.app.container.port }}
         - containerPort: {{ .Values.app.service.sshPort }}
+        env:
+        - name: POSTGRES_HOST
+          value: {{ .Values.postgres.name }}
+        - name: POSTGRES_PORT
+          value: {{ .Values.postgres.service.port | quote }}
+        - name: POSTGRES_DB
+          value: {{ .Values.postgres.auth.database }}
+        - name: POSTGRES_USER
+          value: {{ .Values.postgres.auth.username }}
+        - name: POSTGRES_PASSWORD
+          value: {{ .Values.postgres.auth.password }}
