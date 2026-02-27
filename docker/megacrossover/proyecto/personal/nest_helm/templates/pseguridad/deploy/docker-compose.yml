@@ -1,0 +1,27 @@
+services:
+  web:
+    build:
+      context: /home/jiahaolin/nest/docker/megacrossover/
+      dockerfile: ./dockerfiles/ubseguridad/jhlwubseguridad
+      args:
+        - INICIALES=jhlw
+    container_name: ctjhlwseguridad
+    image: jiahaolin69/ubseguridad
+    ports:
+      - 25:22
+    env_file:
+      - ./.env
+    volumes:
+      - ./logs:/root/logs
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW
+    networks:
+      pseguridad_network:
+        ipv4_address: 192.168.21.3
+networks:
+  pseguridad_network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 192.168.21.0/24

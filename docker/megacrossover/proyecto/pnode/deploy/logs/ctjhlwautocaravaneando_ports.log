@@ -1,0 +1,276 @@
+=== PORT AUDITORIO ===
+Container: ctjhlwautocaravaneando
+
+--- Listening TCP/UDP ports ---
+Netid State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
+udp   UNCONN 0      0         127.0.0.11:48512      0.0.0.0:*          
+tcp   LISTEN 0      4096      127.0.0.11:36251      0.0.0.0:*          
+
+--- Exposed enviroment ports ---
+PORT_SSH=23456
+PORT_WWW=8810
+PORT_NODE=3010
+
+=== END AUDITORIa ===
+=== PORT AUDITORIO ===
+Container: ctjhlwautocaravaneando
+
+--- Listening TCP/UDP ports ---
+Netid State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess                      
+udp   UNCONN 0      0         127.0.0.11:48512      0.0.0.0:*                                
+tcp   LISTEN 0      4096      127.0.0.11:36251      0.0.0.0:*                                
+tcp   LISTEN 0      128          0.0.0.0:23456      0.0.0.0:*    users:(("sshd",pid=32,fd=3))
+tcp   LISTEN 0      128             [::]:23456         [::]:*    users:(("sshd",pid=32,fd=4))
+
+--- Exposed enviroment ports ---
+PORT_SSH=23456
+PORT_WWW=8810
+PORT_NODE=3010
+
+=== END AUDITORIa ===
+=== PORT AUDITORIO ===
+Container: ctjhlwautocaravaneando
+
+--- Listening TCP/UDP ports ---
+Netid State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess                      
+udp   UNCONN 0      0         127.0.0.11:48512      0.0.0.0:*                                
+tcp   LISTEN 0      4096      127.0.0.11:36251      0.0.0.0:*                                
+tcp   LISTEN 0      128          0.0.0.0:23456      0.0.0.0:*    users:(("sshd",pid=32,fd=3))
+tcp   LISTEN 0      128             [::]:23456         [::]:*    users:(("sshd",pid=32,fd=4))
+
+--- Exposed enviroment ports ---
+PORT_SSH=23456
+PORT_WWW=8810
+PORT_NODE=3010
+
+=== END AUDITORIa ===
+=== PORT AUDITORIO ===
+Container: ctjhlwautocaravaneando
+
+--- Listening TCP/UDP ports ---
+Netid State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
+udp   UNCONN 0      0         127.0.0.11:42567      0.0.0.0:*          
+tcp   LISTEN 0      4096      127.0.0.11:41809      0.0.0.0:*          
+
+--- Exposed enviroment ports ---
+PORT_SSH=23456
+PORT_WWW=8810
+PORT_NODE=3010
+
+=== END AUDITORIa ===
+=== PORT AUDITORIO ===
+Container: ctjhlwautocaravaneando
+
+--- Listening TCP/UDP ports ---
+Netid State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess                      
+udp   UNCONN 0      0         127.0.0.11:42567      0.0.0.0:*                                
+tcp   LISTEN 0      4096      127.0.0.11:41809      0.0.0.0:*                                
+tcp   LISTEN 0      128          0.0.0.0:23456      0.0.0.0:*    users:(("sshd",pid=32,fd=3))
+tcp   LISTEN 0      128             [::]:23456         [::]:*    users:(("sshd",pid=32,fd=4))
+
+--- Exposed enviroment ports ---
+PORT_SSH=23456
+PORT_WWW=8810
+PORT_NODE=3010
+
+=== END AUDITORIa ===
+=== PORT AUDITORIO ===
+Container: ctjhlwautocaravaneando
+
+--- Listening TCP/UDP ports ---
+Netid State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
+udp   UNCONN 0      0         127.0.0.11:33815      0.0.0.0:*          
+tcp   LISTEN 0      4096      127.0.0.11:35405      0.0.0.0:*          
+
+--- Exposed enviroment ports ---
+PORT_SSH=23456
+PORT_WWW=8810
+PORT_NODE=3010
+
+=== END AUDITORIa ===
+=== PORT AUDITORIO ===
+Container: ctjhlwautocaravaneando
+
+--- Listening TCP/UDP ports ---
+Netid State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess                      
+udp   UNCONN 0      0         127.0.0.11:33815      0.0.0.0:*                                
+tcp   LISTEN 0      4096      127.0.0.11:35405      0.0.0.0:*                                
+tcp   LISTEN 0      128          0.0.0.0:23456      0.0.0.0:*    users:(("sshd",pid=32,fd=3))
+tcp   LISTEN 0      128             [::]:23456         [::]:*    users:(("sshd",pid=32,fd=4))
+
+--- Exposed enviroment ports ---
+PORT_SSH=23456
+PORT_WWW=8810
+PORT_NODE=3010
+
+=== END AUDITORIa ===
+=== PORT AUDITORIO ===
+Container: ctjhlwautocaravaneando
+
+--- Listening TCP/UDP ports ---
+Netid State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess                      
+udp   UNCONN 0      0         127.0.0.11:33815      0.0.0.0:*                                
+tcp   LISTEN 0      4096      127.0.0.11:35405      0.0.0.0:*                                
+tcp   LISTEN 0      128          0.0.0.0:23456      0.0.0.0:*    users:(("sshd",pid=32,fd=3))
+tcp   LISTEN 0      128             [::]:23456         [::]:*    users:(("sshd",pid=32,fd=4))
+
+--- Exposed enviroment ports ---
+PORT_SSH=23456
+PORT_WWW=8810
+PORT_NODE=3010
+
+=== END AUDITORIa ===
+=== PORT AUDITORIO ===
+Container: ctjhlwautocaravaneando
+
+--- Listening TCP/UDP ports ---
+Netid State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess                      
+udp   UNCONN 0      0         127.0.0.11:33815      0.0.0.0:*                                
+tcp   LISTEN 0      4096      127.0.0.11:35405      0.0.0.0:*                                
+tcp   LISTEN 0      128          0.0.0.0:23456      0.0.0.0:*    users:(("sshd",pid=32,fd=3))
+tcp   LISTEN 0      128             [::]:23456         [::]:*    users:(("sshd",pid=32,fd=4))
+
+--- Exposed enviroment ports ---
+PORT_SSH=23456
+PORT_WWW=8810
+PORT_NODE=3010
+
+=== END AUDITORIa ===
+=== PORT AUDITORIO ===
+Container: ctjhlwautocaravaneando
+
+--- Listening TCP/UDP ports ---
+Netid State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess                      
+udp   UNCONN 0      0         127.0.0.11:33815      0.0.0.0:*                                
+tcp   LISTEN 0      4096      127.0.0.11:35405      0.0.0.0:*                                
+tcp   LISTEN 0      128          0.0.0.0:23456      0.0.0.0:*    users:(("sshd",pid=32,fd=3))
+tcp   LISTEN 0      128             [::]:23456         [::]:*    users:(("sshd",pid=32,fd=4))
+
+--- Exposed enviroment ports ---
+PORT_SSH=23456
+PORT_WWW=8810
+PORT_NODE=3010
+
+=== END AUDITORIa ===
+=== PORT AUDITORIO ===
+Container: ctjhlwautocaravaneando
+
+--- Listening TCP/UDP ports ---
+Netid State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
+udp   UNCONN 0      0         127.0.0.11:34622      0.0.0.0:*          
+tcp   LISTEN 0      4096      127.0.0.11:37337      0.0.0.0:*          
+
+--- Exposed enviroment ports ---
+PORT_SSH=23456
+PORT_WWW=8810
+PORT_NODE=3010
+
+=== END AUDITORIa ===
+=== PORT AUDITORIO ===
+Container: ctjhlwautocaravaneando
+
+--- Listening TCP/UDP ports ---
+Netid State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess                      
+udp   UNCONN 0      0         127.0.0.11:34622      0.0.0.0:*                                
+tcp   LISTEN 0      128          0.0.0.0:23456      0.0.0.0:*    users:(("sshd",pid=32,fd=3))
+tcp   LISTEN 0      4096      127.0.0.11:37337      0.0.0.0:*                                
+tcp   LISTEN 0      128             [::]:23456         [::]:*    users:(("sshd",pid=32,fd=4))
+
+--- Exposed enviroment ports ---
+PORT_SSH=23456
+PORT_WWW=8810
+PORT_NODE=3010
+
+=== END AUDITORIa ===
+=== PORT AUDITORIO ===
+Container: ctjhlwautocaravaneando
+
+--- Listening TCP/UDP ports ---
+Netid State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
+udp   UNCONN 0      0         127.0.0.11:42273      0.0.0.0:*          
+tcp   LISTEN 0      4096      127.0.0.11:41263      0.0.0.0:*          
+
+--- Exposed enviroment ports ---
+PORT_SSH=23456
+PORT_WWW=8810
+PORT_NODE=3010
+
+=== END AUDITORIa ===
+=== PORT AUDITORIO ===
+Container: ctjhlwautocaravaneando
+
+--- Listening TCP/UDP ports ---
+Netid State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess                      
+udp   UNCONN 0      0         127.0.0.11:42273      0.0.0.0:*                                
+tcp   LISTEN 0      4096      127.0.0.11:41263      0.0.0.0:*                                
+tcp   LISTEN 0      128          0.0.0.0:23456      0.0.0.0:*    users:(("sshd",pid=33,fd=3))
+tcp   LISTEN 0      128             [::]:23456         [::]:*    users:(("sshd",pid=33,fd=4))
+
+--- Exposed enviroment ports ---
+PORT_SSH=23456
+PORT_WWW=8810
+PORT_NODE=3010
+
+=== END AUDITORIa ===
+=== PORT AUDITORIO ===
+Container: ctjhlwautocaravaneando
+
+--- Listening TCP/UDP ports ---
+Netid State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
+udp   UNCONN 0      0         127.0.0.11:54536      0.0.0.0:*          
+tcp   LISTEN 0      4096      127.0.0.11:33937      0.0.0.0:*          
+
+--- Exposed enviroment ports ---
+PORT_SSH=23456
+PORT_WWW=8810
+PORT_NODE=3010
+
+=== END AUDITORIa ===
+=== PORT AUDITORIO ===
+Container: ctjhlwautocaravaneando
+
+--- Listening TCP/UDP ports ---
+Netid State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess                      
+udp   UNCONN 0      0         127.0.0.11:54536      0.0.0.0:*                                
+tcp   LISTEN 0      4096      127.0.0.11:33937      0.0.0.0:*                                
+tcp   LISTEN 0      128          0.0.0.0:22452      0.0.0.0:*    users:(("sshd",pid=33,fd=3))
+tcp   LISTEN 0      128             [::]:22452         [::]:*    users:(("sshd",pid=33,fd=4))
+
+--- Exposed enviroment ports ---
+PORT_SSH=23456
+PORT_WWW=8810
+PORT_NODE=3010
+
+=== END AUDITORIa ===
+=== PORT AUDITORIO ===
+Container: ctjhlwautocaravaneando
+
+--- Listening TCP/UDP ports ---
+Netid State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess                      
+udp   UNCONN 0      0         127.0.0.11:54536      0.0.0.0:*                                
+tcp   LISTEN 0      4096      127.0.0.11:33937      0.0.0.0:*                                
+tcp   LISTEN 0      128          0.0.0.0:22452      0.0.0.0:*    users:(("sshd",pid=33,fd=3))
+tcp   LISTEN 0      128             [::]:22452         [::]:*    users:(("sshd",pid=33,fd=4))
+
+--- Exposed enviroment ports ---
+PORT_SSH=23456
+PORT_WWW=8810
+PORT_NODE=3010
+
+=== END AUDITORIa ===
+=== PORT AUDITORIO ===
+Container: ctjhlwautocaravaneando
+
+--- Listening TCP/UDP ports ---
+Netid State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess                      
+udp   UNCONN 0      0         127.0.0.11:54536      0.0.0.0:*                                
+tcp   LISTEN 0      4096      127.0.0.11:33937      0.0.0.0:*                                
+tcp   LISTEN 0      128          0.0.0.0:22452      0.0.0.0:*    users:(("sshd",pid=33,fd=3))
+tcp   LISTEN 0      128             [::]:22452         [::]:*    users:(("sshd",pid=33,fd=4))
+
+--- Exposed enviroment ports ---
+PORT_SSH=23456
+PORT_WWW=8810
+PORT_NODE=3010
+
+=== END AUDITORIa ===

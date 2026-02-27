@@ -1,0 +1,136 @@
+=== Iniciando capa PostgreSQL (v18) ===
+Fecha: Wed Feb 25 01:21:57 UTC 2026
+Usuario: postgres | BD: nestasir | Puerto: 5432
+Ejecutando entrypoint seguridad...
+Entrypoint seguridad ejecutado
+Inicializando cluster PostgreSQL (v18)...
+Cluster inicializado
+Configurando acceso remoto...
+Acceso remoto configurado
+Arrancando PostgreSQL temporalmente para configuración...
+Contraseña del usuario 'postgres' configurada
+Base de datos 'nestasir' creada/verificada
+Privilegios otorgados a 'postgres' sobre 'nestasir'
+Configuración de usuario y BD completada
+Arrancando PostgreSQL en segundo plano...
+PostgreSQL arrancado en segundo plano
+=== Capa PostgreSQL configurada correctamente ===
+=== Iniciando capa PostgreSQL (v18) ===
+Fecha: Wed Feb 25 01:29:01 UTC 2026
+Usuario: postgres | BD: nestasir | Puerto: 5432
+Ejecutando entrypoint seguridad...
+Entrypoint seguridad ejecutado
+Inicializando cluster PostgreSQL (v18)...
+Cluster inicializado
+Configurando acceso remoto...
+Acceso remoto configurado
+Arrancando PostgreSQL temporalmente para configuración...
+Contraseña del usuario 'postgres' configurada
+Base de datos 'nestasir' creada/verificada
+Privilegios otorgados a 'postgres' sobre 'nestasir'
+Configuración de usuario y BD completada
+Arrancando PostgreSQL en segundo plano...
+PostgreSQL arrancado en segundo plano
+=== Capa PostgreSQL configurada correctamente ===
+=== Iniciando capa PostgreSQL (v18) ===
+Fecha: Wed Feb 25 01:36:38 UTC 2026
+Usuario: postgres | BD: nestasir | Puerto: 5432
+Ejecutando entrypoint seguridad...
+Entrypoint seguridad ejecutado
+Inicializando cluster PostgreSQL (v18)...
+Cluster inicializado
+Configurando acceso remoto...
+Acceso remoto configurado
+Arrancando PostgreSQL temporalmente para configuración...
+Contraseña del usuario 'postgres' configurada
+Base de datos 'nestasir' creada/verificada
+Privilegios otorgados a 'postgres' sobre 'nestasir'
+Configuración de usuario y BD completada
+Arrancando PostgreSQL en segundo plano...
+PostgreSQL arrancado en segundo plano
+=== Capa PostgreSQL configurada correctamente ===
+=== Iniciando capa PostgreSQL (v18) ===
+Fecha: Wed Feb 25 02:06:45 UTC 2026
+Usuario: postgres | BD: nestasir | Puerto: 5432
+Ejecutando entrypoint seguridad...
+Entrypoint seguridad ejecutado
+Inicializando cluster PostgreSQL (v18)...
+Cluster inicializado
+Configurando acceso remoto...
+Acceso remoto configurado
+Arrancando PostgreSQL temporalmente para configuración...
+Contraseña del usuario 'postgres' configurada
+Base de datos 'nestasir' creada/verificada
+Privilegios otorgados a 'postgres' sobre 'nestasir'
+Configuración de usuario y BD completada
+Arrancando PostgreSQL en segundo plano...
+PostgreSQL arrancado en segundo plano
+=== Capa PostgreSQL configurada correctamente ===
+=== Iniciando capa PostgreSQL (v18) ===
+Fecha: Wed Feb 25 02:19:23 UTC 2026
+Usuario: postgres | BD: nestasir | Puerto: 5432
+Ejecutando entrypoint seguridad...
+Entrypoint seguridad ejecutado
+Inicializando cluster PostgreSQL (v18)...
+Cluster inicializado
+Configurando acceso remoto...
+Acceso remoto configurado
+Arrancando PostgreSQL temporalmente para configuración...
+Contraseña del usuario 'postgres' configurada
+Base de datos 'nestasir' creada/verificada
+Privilegios otorgados a 'postgres' sobre 'nestasir'
+Configuración de usuario y BD completada
+Arrancando PostgreSQL en segundo plano...
+PostgreSQL arrancado en segundo plano
+=== Capa PostgreSQL configurada correctamente ===
+=== Iniciando capa PostgreSQL (v18) ===
+Fecha: Wed Feb 25 02:28:53 UTC 2026
+Usuario: postgres | BD: nestasir | Puerto: 5432
+Ejecutando entrypoint seguridad...
+Entrypoint seguridad ejecutado
+Inicializando cluster PostgreSQL (v18)...
+Cluster inicializado
+Configurando acceso remoto...
+Acceso remoto configurado
+Arrancando PostgreSQL temporalmente para configuración...
+Contraseña del usuario 'postgres' configurada
+Base de datos 'nestasir' creada/verificada
+Privilegios otorgados a 'postgres' sobre 'nestasir'
+Configuración de usuario y BD completada
+Arrancando PostgreSQL en segundo plano...
+PostgreSQL arrancado en segundo plano
+=== Capa PostgreSQL configurada correctamente ===
+=== Iniciando capa PostgreSQL (v18) ===
+Fecha: Wed Feb 25 11:48:22 UTC 2026
+Usuario: postgres | BD: nestasir | Puerto: 5432
+Ejecutando entrypoint seguridad...
+Entrypoint seguridad ejecutado
+Inicializando cluster PostgreSQL (v18)...
+Cluster inicializado
+Configurando acceso remoto...
+Acceso remoto configurado
+Arrancando PostgreSQL temporalmente para configuración...
+Contraseña del usuario 'postgres' configurada
+Base de datos 'nestasir' creada/verificada
+Privilegios otorgados a 'postgres' sobre 'nestasir'
+Configuración de usuario y BD completada
+Arrancando PostgreSQL en segundo plano...
+PostgreSQL arrancado en segundo plano
+=== Capa PostgreSQL configurada correctamente ===
+=== Iniciando capa PostgreSQL (v18) ===
+Fecha: Wed Feb 25 12:11:19 UTC 2026
+Usuario: postgres | BD: nestasir | Puerto: 5432
+Ejecutando entrypoint seguridad...
+Entrypoint seguridad ejecutado
+Inicializando cluster PostgreSQL (v18)...
+Cluster inicializado
+Configurando acceso remoto...
+Acceso remoto configurado
+Arrancando PostgreSQL temporalmente para configuración...
+Contraseña del usuario 'postgres' configurada
+Base de datos 'nestasir' creada/verificada
+Privilegios otorgados a 'postgres' sobre 'nestasir'
+Configuración de usuario y BD completada
+Arrancando PostgreSQL en segundo plano...
+PostgreSQL arrancado en segundo plano
+=== Capa PostgreSQL configurada correctamente ===
