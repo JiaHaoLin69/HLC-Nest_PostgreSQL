@@ -14,7 +14,7 @@ PG_PORT="5432"
 # Detectar versión de PostgreSQL instalada
 PG_VERSION=$(ls /usr/lib/postgresql/ | sort -V | tail -1)
 PG_BIN="/usr/lib/postgresql/$PG_VERSION/bin"
-PGDATA="/var/lib/postgresql/data"
+PGDATA="/var/lib/postgresql/data/pgdata"
 
 log() {
     echo "$1"
@@ -95,12 +95,11 @@ crear_usuario_y_bd() {
 }
 
 # =============================================
-# Arrancar PostgreSQL en segundo plano
+# Arrancar PostgreSQL en primer plano
 # =============================================
-arrancar_postgresql_background() {
-    log "Arrancando PostgreSQL en segundo plano..."
-    su - postgres -c "$PG_BIN/pg_ctl -D $PGDATA start -w -l /var/lib/postgresql/logfile" 
-    log "PostgreSQL arrancado en segundo plano"
+arrancar_postgresql_foreground() {
+    log "Arrancando PostgreSQL en primer plano..."
+    exec su - postgres -c "$PG_BIN/postgres -D $PGDATA"
 }
 
 # =============================================
@@ -118,7 +117,7 @@ main() {
     inicializar_cluster
     configurar_acceso
     crear_usuario_y_bd
-    arrancar_postgresql_background
+    arrancar_postgresql_foreground
 
     log "=== Capa PostgreSQL configurada correctamente ==="
 }
