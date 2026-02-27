@@ -14,7 +14,7 @@ app:
     port: 3001
     nodePort: 30022
   ingress:
-    host: nest.megacrossover.es
+    host: nesthelm.megacrossover.es
     port: 3001
 
 postgres:
