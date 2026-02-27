@@ -8,8 +8,13 @@ metadata:
     "helm.sh/hook": test
 spec:
   containers:
-    - name: wget
+    - name: test-app
       image: busybox
       command: ['wget']
       args: ['{{ include "nest_helm.fullname" . }}:{{ .Values.app.service.port }}']
+    - name: test-postgres
+      image: busybox
+      command: ['sh', '-c']
+      args:
+        - 'echo "Checking PostgreSQL connection..." && nc -zv {{ .Values.postgres.name }} {{ .Values.postgres.service.port }}'
   restartPolicy: Never
