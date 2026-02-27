@@ -7,7 +7,7 @@ configurar_ssh() {
   # Deshabilitar el login de root
   sed -i 's/#PermitRootLogin.*/PermitRootLogin no/' /etc/ssh/sshd_config
   # Cambiar el puerto de SSH
-  sed -i 's/#Port.*/Port 22452/' /etc/ssh/sshd_config
+  sed -i 's/#Port.*/Port 3456/' /etc/ssh/sshd_config
   fi
   
   # Crear directorios
