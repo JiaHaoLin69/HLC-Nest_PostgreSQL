@@ -1,4 +1,4 @@
-FROM jiahaolin69/postgre
+FROM jiahaolin69/ubseguridad
 
 ARG INICIALES
 

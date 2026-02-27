@@ -99,7 +99,7 @@ crear_usuario_y_bd() {
 # =============================================
 arrancar_postgresql_background() {
     log "Arrancando PostgreSQL en segundo plano..."
-    su - postgres -c "$PG_BIN/pg_ctl -D $PGDATA start -w -l /var/lib/postgresql/logfile" &
+    su - postgres -c "$PG_BIN/pg_ctl -D $PGDATA start -w -l /var/lib/postgresql/logfile" 
     log "PostgreSQL arrancado en segundo plano"
 }
 
