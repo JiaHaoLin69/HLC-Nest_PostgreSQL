@@ -1,6 +1,6 @@
 apiVersion: v2
-name: nest_con_helm
-description: A Helm chart for Kubernetes
+name: nest-con-helm
+description: Helm chart para el proyecto NestJS + PostgreSQL (megacrossover)
 
 # A chart can be either an 'application' or a 'library' chart.
 #
