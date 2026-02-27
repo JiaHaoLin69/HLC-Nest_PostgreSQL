@@ -1,21 +1,25 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: webnest-deployment
-  namespace: proyecto-nest
+  name: {{ .Values.app.container.name }}-deployment
+  namespace: {{ .Release.Namespace }}
+  labels:
+    app: {{ .Values.app.container.name }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
 spec:
-  replicas: 3
+  replicas: {{ .Values.app.container.replicas }}
   selector:
     matchLabels:
-      app: webnest
+      app: {{ .Values.app.container.name }}
   template:
     metadata:
       labels:
-        app: webnest
+        app: {{ .Values.app.container.name }}
+        app.kubernetes.io/instance: {{ .Release.Name }}
     spec:
       containers:
-      - name: webnest
-        image: jiahaolin69/nginxpokeapi
+      - name: {{ .Values.app.container.name }}
+        image: "{{ .Values.app.image.repository }}:{{ .Values.app.image.tag }}"
+        imagePullPolicy: {{ .Values.app.image.pullPolicy }}
         ports:
-        - containerPort: 3001
-        - containerPort: 22452
+        - containerPort: {{ .Values.app.container.port }}

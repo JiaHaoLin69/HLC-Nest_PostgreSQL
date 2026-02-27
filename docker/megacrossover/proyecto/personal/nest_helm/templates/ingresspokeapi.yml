@@ -1,19 +1,19 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: webnest-ingress
-  namespace: proyecto-nest
+  name: {{ .Values.app.container.name }}-ingress
+  namespace: {{ .Release.Namespace }}
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
-  - host: nest.megacrossover.es
+  - host: {{ .Values.app.ingress.host }}
     http:
       paths:
       - path: /
         pathType: Prefix
         backend:
           service:
-            name: nest-taller
+            name: {{ .Values.app.container.name }}-service
             port:
-              number: 3001
+              number: {{ .Values.app.ingress.port }}

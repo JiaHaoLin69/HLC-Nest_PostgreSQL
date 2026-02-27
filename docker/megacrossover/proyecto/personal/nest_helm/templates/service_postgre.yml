@@ -1,0 +1,17 @@
+{{- if .Values.postgres.persistence.enabled }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.postgres.name }}
+  namespace: {{ .Release.Namespace }}
+spec:
+  type: ClusterIP
+  selector:
+    app: {{ .Values.postgres.name }}
+    app.kubernetes.io/component: postgres
+    app.kubernetes.io/instance: {{ .Release.Name }}
+  ports:
+    - name: pg
+      port: {{ .Values.postgres.service.port }}
+      targetPort: 5432
+{{- end }}
