@@ -1,0 +1,23 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 60vh;
+}
+
+.card {
+    padding: 3rem;
+    border-radius: var(--radius-lg);
+    max-width: 600px;
+    text-align: center;
+}
+
+.title {
+    margin-bottom: 1.5rem;
+    color: hsl(var(--pk-primary));
+}
+
+.text {
+    font-size: 1.2rem;
+    line-height: 1.6;
+}

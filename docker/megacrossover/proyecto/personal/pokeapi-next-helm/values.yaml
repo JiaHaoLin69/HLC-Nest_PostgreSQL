@@ -1,0 +1,17 @@
+app:
+  name: pokeapinext
+  image:
+    repository: jiahaolin69/pokeapi_next_finalizado
+    tag: latest
+    pullPolicy: Always
+  container: 
+    name: pokeapinext
+    port: 80
+    replicas: 1
+  service:
+    type: NodePort
+    port: 3000
+    nodePort: 30087
+  ingress:
+    host: pokeapi.megacrossover.es
+    port: 80

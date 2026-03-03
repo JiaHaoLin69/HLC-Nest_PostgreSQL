@@ -1,0 +1,78 @@
+:root {
+  /* Simplified Night Mode Palette */
+  --pk-primary: 220 70% 50%;
+  /* Deep Blue - kept for brand */
+  --pk-secondary: 340 85% 60%;
+  /* Pink - for hearts/highlights */
+  --pk-accent: 160 80% 40%;
+  /* Green */
+
+  /* Dark Base Colors */
+  --pk-background: 222 20% 10%;
+  /* Very dark blue-ish grey */
+  --pk-surface: 222 20% 16%;
+  /* Slightly lighter */
+  --pk-text: 220 20% 95%;
+  /* Off-white text */
+  --pk-text-muted: 220 15% 70%;
+  /* Muted text */
+  --pk-border: 220 20% 25%;
+  /* Subtle border */
+
+  /* Simplified Glass vars (optional, kept flat mostly) */
+  --glass-bg: rgba(30, 35, 45, 0.95);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
+
+  /* Spacing */
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+}
+
+/* Removed data-theme='dark' block as this is now the default */
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background: hsl(var(--pk-background));
+  color: hsl(var(--pk-text));
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  transition: background 0.3s ease, color 0.3s ease;
+  min-height: 100vh;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Utilities */
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+}
+
+/* Layout Helpers */
+.layoutWrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.layoutMain {
+  flex: 1;
+}

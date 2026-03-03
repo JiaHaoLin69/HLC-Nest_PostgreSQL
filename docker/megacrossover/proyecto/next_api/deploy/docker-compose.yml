@@ -1,0 +1,13 @@
+services:
+  web:
+    build:
+      context: /home/jiahaolin/nest/docker/megacrossover/
+      dockerfile: ./dockerfiles/nginxpokeapi_next/dockerfiles
+    container_name: pokeapi_next_finalizado
+    image: jiahaolin69/pokeapi_next_finalizado
+    ports:
+      - "8080:80"
+    env_file:
+      - ./.env
+    volumes:
+      - ./logs:/root/logs

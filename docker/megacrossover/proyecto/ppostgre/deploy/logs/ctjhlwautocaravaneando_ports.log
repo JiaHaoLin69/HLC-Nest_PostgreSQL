@@ -3,3 +3,8 @@ Container:
 
 --- Listening TCP/UDP ports ---
 /root/admin/ubseguridad/jhlwstart.sh: line 16: ss: command not found
+=== PORT AUDITORIO ===
+Container: 
+
+--- Listening TCP/UDP ports ---
+/root/admin/ubseguridad/jhlwstart.sh: line 16: ss: command not found

@@ -1,0 +1,176 @@
+.header {
+    background: var(--pk-surface);
+    /* Solid surface instead of glass for "simple" look */
+    border-bottom: 1px solid var(--pk-border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    padding: 1.2rem 0;
+    /* Increased padding */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1400px;
+    /* Wider container for header */
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 800;
+    /* Simplified White/Red Logo */
+    color: #ffffff;
+    text-shadow: 2px 2px 0px #e63946;
+    /* Simple retro/bold red shadow */
+    letter-spacing: -1px;
+    background: none;
+    -webkit-background-clip: unset;
+    -webkit-text-fill-color: unset;
+}
+
+.nav {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+.link {
+    font-weight: 500;
+    transition: color 0.2s;
+    cursor: pointer;
+    position: relative;
+}
+
+.link:hover {
+    color: hsl(var(--pk-primary));
+}
+
+.dropdown {
+    position: relative;
+}
+
+.dropdownContent {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: hsl(var(--pk-surface));
+    min-width: 200px;
+    border-radius: var(--radius-sm);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 0.5rem 0;
+    display: flex;
+    flex-direction: column;
+    /* overflow: hidden; removed to allow submenus */
+    border: 1px solid var(--pk-border);
+}
+
+.dropdownContent a {
+    padding: 0.75rem 1rem;
+    transition: background 0.2s;
+}
+
+.dropdownContent a:hover {
+    background: hsl(var(--pk-background));
+    color: hsl(var(--pk-primary));
+}
+
+/* Submenu styles */
+.submenuTrigger {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.submenuTrigger:after {
+    content: '›';
+    font-size: 1.2rem;
+    line-height: 1;
+}
+
+.submenu {
+    position: absolute;
+    top: 0;
+    left: 100%;
+    margin-left: 2px;
+    background: hsl(var(--pk-surface));
+    min-width: 200px;
+    border-radius: var(--radius-sm);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 0.5rem 0;
+    display: none;
+    flex-direction: column;
+    border: 1px solid var(--pk-border);
+}
+
+.submenuTrigger:hover .submenu {
+    display: flex;
+    animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateX(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.langSwitcher {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.langSwitcher button {
+    background: none;
+    border: 1px solid var(--pk-border);
+    border-radius: 4px;
+    padding: 0.25rem 0.5rem;
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: all 0.2s;
+    color: hsl(var(--pk-text-muted));
+}
+
+.langSwitcher button.activeLang {
+    background: hsl(var(--pk-primary));
+    color: white;
+    border-color: hsl(var(--pk-primary));
+}
+
+.mobileToggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: hsl(var(--pk-surface));
+        flex-direction: column;
+        padding: 1rem;
+        border-bottom: 1px solid var(--pk-border);
+    }
+
+    .navOpen {
+        display: flex;
+    }
+
+    .mobileToggle {
+        display: block;
+    }
+}

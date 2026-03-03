@@ -1,0 +1,11 @@
+.footer {
+    text-align: center;
+    padding: 3rem 1rem;
+    background: #0f1219;
+    /* Even darker distinct footer background */
+    border-top: 1px solid var(--pk-border);
+    margin-top: 4rem;
+    color: var(--pk-text-muted);
+    font-size: 1rem;
+    font-weight: 500;
+}

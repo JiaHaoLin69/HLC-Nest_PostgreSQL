@@ -12,3 +12,31 @@ PORT_WWW=8810
 PORT_NODE=3010
 
 === END AUDITORIa ===
+=== PORT AUDITORIO ===
+Container: ctjhlwautocaravaneando
+
+--- Listening TCP/UDP ports ---
+Netid State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
+udp   UNCONN 0      0         127.0.0.11:34477      0.0.0.0:*          
+tcp   LISTEN 0      4096      127.0.0.11:41003      0.0.0.0:*          
+
+--- Exposed enviroment ports ---
+PORT_SSH=23456
+PORT_WWW=8810
+PORT_NODE=3010
+
+=== END AUDITORIa ===
+=== PORT AUDITORIO ===
+Container: ctjhlwautocaravaneando
+
+--- Listening TCP/UDP ports ---
+Netid State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
+udp   UNCONN 0      0         127.0.0.11:56751      0.0.0.0:*          
+tcp   LISTEN 0      4096      127.0.0.11:34099      0.0.0.0:*          
+
+--- Exposed enviroment ports ---
+PORT_SSH=23456
+PORT_WWW=8810
+PORT_NODE=3010
+
+=== END AUDITORIa ===
