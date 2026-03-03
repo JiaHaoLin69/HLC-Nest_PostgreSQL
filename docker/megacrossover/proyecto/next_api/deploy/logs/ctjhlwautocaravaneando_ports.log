@@ -63155,3 +63155,17 @@ tcp   LISTEN 0      128             [::]:3456          [::]:*    users:(("sshd",
 --- Exposed enviroment ports ---
 
 === END AUDITORIa ===
+=== PORT AUDITORIO ===
+Container: 
+
+--- Listening TCP/UDP ports ---
+Netid State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess                        
+udp   UNCONN 0      0         127.0.0.11:60347      0.0.0.0:*                                  
+tcp   LISTEN 0      4096      127.0.0.11:40797      0.0.0.0:*                                  
+tcp   LISTEN 0      511          0.0.0.0:80         0.0.0.0:*    users:(("nginx",pid=245,fd=5))
+tcp   LISTEN 0      128          0.0.0.0:3456       0.0.0.0:*    users:(("sshd",pid=38,fd=3))  
+tcp   LISTEN 0      128             [::]:3456          [::]:*    users:(("sshd",pid=38,fd=4))  
+
+--- Exposed enviroment ports ---
+
+=== END AUDITORIa ===
